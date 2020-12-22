@@ -32,7 +32,7 @@ AOS.init();
 // BEGIN validación de número telefónico
 let phone = document.querySelectorAll(".phone");
 // let form = document.forms['creditpoints'];
-let scriptURL = '';
+let scriptURL = 'https://script.google.com/macros/s/AKfycbziTXo6Iq53jJQMe3Q42zSkjjBKLi8koE3uFxUc_1rUOTOyK1pv/exec';
 
 function strictValidation(input) {
   input.addEventListener('input', function() {
@@ -76,7 +76,7 @@ phone.forEach(el=> {
     utilsScript: './node_modules/intl-tel-input/build/js/utils.js',
     initialCountry: "auto",
     geoIpLookup: function(success, failure) {
-      $.get("https://ipinfo.io/json=", function() {}, "jsonp").always(function(resp) {
+      $.get("https://ipinfo.io/json", function() {}, "jsonp").always(function(resp) {
         console.log(resp)
         let countryCode = (resp && resp.country) ? resp.country : "pr";
         success(countryCode);
@@ -102,20 +102,16 @@ function formToJson(a) {
 function sendEmail(a, email) {
   let e = formToJson(a);
   Email.send({
-    SecureToken: "",
+    SecureToken: "30e0150e-e943-4f06-ae37-b5e9d4591eef",
     To: email,
-    From: "",
+    From: "leads@franelybeautylashes.com",
     Subject: "Franely Beauty Lashes - Nuevo lead de landing page",
     Body: `
     <h1>Datos del usuario</h1>
     <p>Nombre: ${e.name}. <br>
-    Apellido: ${e.lastname}. <br>
     Email: ${e.mail}. <br>
     Teléfono: ${e.phone}. <br>
-    Dirección: ${e.address}. <br>
-    Pueblo: ${e.city}. <br>
-    Código Postal: ${e.zip}. <br>
-    Fue añadido en <a href="">Google Sheet</a>. <br>
+    Fue añadido en <a href="https://docs.google.com/spreadsheets/d/1iG4-BfPF04RwlqRhX6MwFjYqFbpN8o8bqDQZVyeljng/edit?usp=sharing">Google Sheet</a>. <br>
     </p>
     `
   }).then(
@@ -134,7 +130,7 @@ function message(form) {
   let html = `
   <div class="card text-white bg-success text-center py-5">
     <div class="card-body">
-      <h2 class="card-title font-weight-bold">¡Muchas Gracias!</h2>
+      <h2 class="card-title hussar">¡Muchas Gracias!</h2>
       <p class="card-text">Sus datos serán validados lo más pronto posible, ¡estamos en contacto!</p>
     </div>
   </div>
@@ -156,7 +152,7 @@ let validation = Array.prototype.filter.call(forms, function(form) {
       e.preventDefault();
       clearPhone(phone);
       let sheet = dataToSheet(form, scriptURL);
-      sendEmail(form, '');
+      sendEmail(form, 'franelybeauty2020@gmail.com');
       message(form)
     }
     form.classList.add('was-validated');
@@ -165,14 +161,15 @@ let validation = Array.prototype.filter.call(forms, function(form) {
 // END Bootstrap Validación
 
 // BEGIN Flickity
-let elem = document.querySelector('.main-carousel');
-let flkty = new Flickity( elem, {
-  // options
-  prevNextButtons: false,
-  pageDots: false,
-  contain: true,
-    
-  fullscreen: true,
+let elem = document.querySelectorAll('.main-carousel');
+let flkty = elem.forEach(el => {
+  new Flickity( el, {
+    // options
+    prevNextButtons: true,
+    pageDots: false,
+    contain: true,
+    fullscreen: true,
+  });
 });
 // END Flickity
 
@@ -204,3 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => $('#loader').addClass('d-none').removeClass('d-flex'), 3000);
 });
 // END Loader
+
+// BEGIN Background Parallax
+let parallaxes = document.querySelectorAll(".parallax");
+
+parallaxes.forEach((parallax) => {
+  window.addEventListener("scroll", function() {
+      let scrolledHeight= window.pageYOffset, limit= parallax.offsetTop+ parallax.offsetHeight;
+      if(scrolledHeight > parallax.offsetTop && scrolledHeight <= limit) {
+      parallax.style.backgroundPositionY=  (scrolledHeight - parallax.offsetTop) /1.5+ "px";
+    } else {
+      parallax.style.backgroundPositionY=  "0";
+    }
+  });
+})
+// END Background Parallax

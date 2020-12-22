@@ -41,6 +41,9 @@ body {
 // .check {
 //   list-style-image: url(../img/icon/check.png);
 // }
+.cursor-pointer {
+  cursor: pointer;
+} 
 .hussar {
   font-family: 'Hussar';
 }
@@ -86,12 +89,9 @@ a:focus, button:focus, div:focus, input:focus, form:focus {
   height:60px;
   bottom:40px;
   right:40px;
-  background-color:$green;
-  color:#FFF;
   border-radius:50px;
   text-align:center;
   font-size:30px;
-  box-shadow: 2px 2px 3px #999;
   z-index:100;
   display: flex;
   justify-content: center;
@@ -111,7 +111,7 @@ a:focus, button:focus, div:focus, input:focus, form:focus {
 // BEGIN Flickyti
 .carousel-cell {
   width: 100%; /* full width */
-  height: 250px;
+  height: 540px;
   /* center images in cells with flexbox */
   display: flex;
   align-items: center;
@@ -136,3 +136,44 @@ a:focus, button:focus, div:focus, input:focus, form:focus {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
+// BEGIN S1
+#S1, #S4 {
+  background: url('../img/lashes-background.webp') no-repeat center / cover;
+  .no-webp {
+    background: url('../img/lashes-background.jpg') no-repeat center / cover;
+  }
+}
+// END S1
+
+// BEGIN Gallery
+.gallery {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-areas: "uno     uno     dos   dos   tres  tres"
+  "cuatro  cuatro  cinco cinco tres  tres"
+  "cuatro  cuatro  cinco cinco seis  seis"; 
+  @media (max-width: 991.98px) {
+      grid-template-areas: "uno" "dos" "tres" "cuatro" "cinco" "seis";
+      grid-gap: 3rem;
+      text-align: center;
+  }
+  .gallery__item--1 {
+    grid-area: uno;
+  }
+  .gallery__item--2 {
+    grid-area: dos;
+  }
+  .gallery__item--3 {
+    grid-area: tres;
+  }
+  .gallery__item--4 {
+    grid-area: cuatro;
+  }
+  .gallery__item--5 {
+    grid-area: cinco;
+  }
+  .gallery__item--6 {
+    grid-area: seis;
+  }
+}
+// END Gallery
