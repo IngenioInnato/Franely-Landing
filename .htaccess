@@ -13,6 +13,12 @@ RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 #END Forzar SSL Conexion segura
 
+#BEGIN Forzar no www
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www.tudominio.com [NC]
+RewriteRule ^(.*)$ http://tudominio.com/$1 [L,R=301]
+#END Forzar no www
+
 # BEGIN Desactivar la firma del servidor
 ServerSignature Off
 # END Desactivar la firma del servidor
