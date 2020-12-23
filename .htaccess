@@ -15,9 +15,11 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 #BEGIN Forzar no www
 RewriteEngine On
-RewriteCond %{HTTP_HOST} ^www.tudominio.com [NC]
-RewriteRule ^(.*)$ http://tudominio.com/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^www.franelybeautylashes.com [NC]
+RewriteRule ^(.*)$ http://franelybeautylashes.com/$1 [L,R=301]
 #END Forzar no www
+
+
 
 # BEGIN Desactivar la firma del servidor
 ServerSignature Off
@@ -190,7 +192,7 @@ Header append Vary User-Agent
 SetOutputFilter DEFLATE
 Header unset ETag
 FileETag None
-<FilesMatch "\.(js|css|ico|pdf|jpg|jpeg|png|gif|webp)$">
+<FilesMatch "\.(js|css|ico|pdf|jpg|jpeg|png|gif|webp|woff)$">
 Header set Cache-Control "public"
 Header set Expires "Thu, 15 Apr 2021 20:00:00 GMT"
 Header set Cache-Control "max-age=31536000"
