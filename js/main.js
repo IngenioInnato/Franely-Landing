@@ -152,7 +152,7 @@ let validation = Array.prototype.filter.call(forms, function(form) {
       e.preventDefault();
       clearPhone(phone);
       let sheet = dataToSheet(form, scriptURL);
-      sendEmail(form, 'franelybeauty2020@gmail.com');
+      sendEmail(form, 'leads@franelybeautylashes.com');
       message(form)
     }
     form.classList.add('was-validated');
