@@ -13595,11 +13595,18 @@ a:focus, button:focus, div:focus, input:focus, form:focus {
   transition: all 1s ease;
 }
 
-#S1, #S4 {
+#S1 {
   background: url("../img/lashes-background.webp") no-repeat center/cover;
 }
-#S1 .no-webp, #S4 .no-webp {
+#S1 .no-webp {
   background: url("../img/lashes-background.jpg") no-repeat center/cover;
+}
+
+#S4 {
+  background: url("../img/lashes-background-2.webp") no-repeat center/cover;
+}
+#S4 .no-webp {
+  background: url("../img/lashes-background-2.jpg") no-repeat center/cover;
 }
 
 .gallery {

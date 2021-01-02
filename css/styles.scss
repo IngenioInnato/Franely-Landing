@@ -137,14 +137,19 @@ a:focus, button:focus, div:focus, input:focus, form:focus {
   transition: all 1s ease;
 }
 // BEGIN S1
-#S1, #S4 {
+#S1 {
   background: url('../img/lashes-background.webp') no-repeat center / cover;
   .no-webp {
     background: url('../img/lashes-background.jpg') no-repeat center / cover;
   }
 }
 // END S1
-
+#S4 {
+  background: url('../img/lashes-background-2.webp') no-repeat center / cover;
+  .no-webp {
+    background: url('../img/lashes-background-2.jpg') no-repeat center / cover;
+  }
+} 
 // BEGIN Gallery
 .gallery {
   display: grid;
